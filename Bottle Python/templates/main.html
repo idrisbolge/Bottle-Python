@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ana Sayfa</title>
+    
+    <link href="../static/css/style3.css" rel="stylesheet">
+    
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1" />
+     
+</head>
+<body >
+
+
+
+
+<nav><ul>
+%if role == 'root': 
+  <li><a href="#">Set Modem Paramater</a></li>
+%end
+%if role == 'user' or role == 'root':
+  <li><a href="#">Meter Menu</a><ul><li><a href="">Add</a></li><li><a href="">Read</a></li><li><a href="">Delete</a></li></ul></li>
+%end
+%if role == 'user' or role == 'root':
+  <li><a href="#">Modem Stats</a></li>
+%end
+%if role == 'user' or role == 'root' or role == 'test':
+  <li><a href="#">Modem Test</a></li>
+%end
+           <label style="float: right"><form action="/logout" method="post"><input class="logoutbutton" type="submit" value="Çıkış Yap" ></form></label>
+            <label style="float: right">{{usermsg}}</label>
+           
+		</ul>
+   </nav> 
+    
+ 
+
+<form action="/receive" method="get">
+   <br><br><br>
+    <textarea id= "txtarea">{{snc}}</textarea>
+    <input type="button" value="getir">
+    
+</form>
+
+    
+
+
+</body>
+</html>

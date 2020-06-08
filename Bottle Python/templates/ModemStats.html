@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modem Stats</title>
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../static/css/style3.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/css/accordion.css">
+    <script src="../static/js/jquery.js"> </script>
+    <script type="text/javascript" src="../static/js/script.js"></script>
+
+</head>
+<body >
+
+
+
+<nav><ul>
+%if role == 'root': 
+  <li><a href="/SetModemParameter">Set Modem Parameter</a></li>
+%end
+%if role == 'user' or role == 'root':
+  <li><a href="/MeterMenu">Meter Menu</a><ul><li><a href="">Add</a></li><li><a href="">Read</a></li><li><a href="">Delete</a></li></ul></li>
+%end
+%if role == 'user' or role == 'root':
+  <li><a href="#" class="current">Modem Stats</a></li>
+%end
+%if role == 'user' or role == 'root' or role == 'test':
+  <li><a href="/ModemTest">Modem Test</a></li>
+%end
+           <label style="float: right"><form action="/logout" method="post"><input class="logoutbutton" type="submit" value="Çıkış Yap" ></form></label>
+            <label style="float: right">{{usermsg}}</label>
+           
+    </ul>
+   </nav> 
+ 
+
+
+
+ <button class="accordion">UPTIME</button>
+<div class="panel">
+  <p id="uptime"></p><br><br><br>
+</div>
+
+
+<button class="accordion">IP</button>
+<div class="panel">
+  <p id="ip"></p><br><br><br>
+</div>
+
+
+<button class="accordion">DISK USAGE</button>
+<div class="panel">
+  <p id="DiskUsage"></p><br><br><br>
+</div>
+
+ <button class="accordion">ROUTE TABLE</button>
+<div class="panel">
+  <p id="RouteTable"></p><br><br><br>
+</div>
+
+
+<button class="accordion">IMEI</button>
+<div class="panel">
+  <p id="imei"></p><br><br><br>
+</div>
+
+
+<button class="accordion">SIGNAL STRAGTH</button>
+<div class="panel">
+  <p id="signal"></p><br><br><br>
+</div>
+
+ <button class="accordion">LAC INFO</button>
+<div class="panel">
+  <p id="lacinfo"></p><br><br><br>
+</div>
+
+
+<button class="accordion">DATA USAGE</button>
+<div class="panel">
+  <p id="DataUsage"></p><br><br><br>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+
+</body>
+</html>
